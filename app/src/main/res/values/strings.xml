@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Calorie Tracker</string>
+    <string name="goal">Goal</string>
+    <string name="food">Food</string>
+    <string name="exercise">Exercise</string>
+    <string name="remaining">Remaining</string>
+    <string name="diary_add">Add</string>
+    <string name="diary_food_breakfast">Breakfast</string>
+    <string name="diary_food_lunch">Lunch</string>
+    <string name="diary_food_dinner">DInner</string>
+    <string name="diary_food_snacks">Snack</string>
+    <string name="diary_add_food">Add Food</string>
+    <string name="diary_exercise">Exercise</string>
+    <string name="diary_add_exercise">Add Exercise</string>
 </resources>
