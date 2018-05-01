@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.junlinliu.calorietracker.R;
 import com.example.junlinliu.calorietracker.data.DiaryItem;
-import com.example.junlinliu.calorietracker.data.FoodItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHo
         } else {
             holder.title.setText((itemList.get(position)).getTitle());
             holder.value.setText(Integer.toString((itemList.get(position)).getTotalCalorie()));
-            holder.amount.setText(Double.toString((itemList.get(position)).getUnitNumber()) + " " + ((FoodItem) itemList.get(position)).getUnitName());
+            holder.amount.setText(Double.toString((itemList.get(position)).getUnitNumber()) + " " + ((DiaryItem) itemList.get(position)).getUnitName());
             holder.all.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

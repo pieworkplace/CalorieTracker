@@ -2,10 +2,11 @@ package com.example.junlinliu.calorietracker.data;
 
 import com.example.junlinliu.calorietracker.utils.DateUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Diary {
+public class Diary implements Serializable{
     private String date;
     private List<DiaryItem> breakfastList;
     private List<DiaryItem> lunchList;
@@ -113,4 +114,85 @@ public class Diary {
     public void setExerciseList(List<DiaryItem> exerciseList) {
         this.exerciseList = exerciseList;
     }
+
+    public void addBreakfastList(DiaryItem food) {
+        breakfastList.add(food);
+    }
+
+    public void addLunchList(DiaryItem food) {
+        lunchList.add(food);
+    }
+
+    public void addDinnerList(DiaryItem food) {
+        dinnerList.add(food);
+    }
+
+    public void addSnackList(DiaryItem food) {
+        snackList.add(food);
+    }
+
+    public void addExerciseList(DiaryItem exercise){
+        exerciseList.add(exercise);
+    }
+
+    public void removeBreakfastList(int position){
+        if (position < breakfastList.size() && position >= 0){
+            breakfastList.remove(position);
+        }
+    }
+
+    public void removeLunchList(int position){
+        if (position < lunchList.size() && position >= 0){
+            lunchList.remove(position);
+        }
+    }
+
+    public void removeDinnerList(int position){
+        if (position < dinnerList.size() && position >= 0){
+            dinnerList.remove(position);
+        }
+    }
+
+    public void removeSnackList(int position){
+        if (position < snackList.size() && position >= 0){
+            snackList.remove(position);
+        }
+    }
+
+    public void removeExerciseList(int position){
+        if (position < exerciseList.size() && position >= 0){
+            exerciseList.remove(position);
+        }
+    }
+
+    public void editBreakfastList(int position, DiaryItem food){
+        if (position < breakfastList.size() && position >= 0){
+            breakfastList.set(position, food);
+        }
+    }
+
+    public void editLunchList(int position, DiaryItem food){
+        if (position < lunchList.size() && position >= 0){
+            lunchList.set(position, food);
+        }
+    }
+
+    public void editDinnerList(int position, DiaryItem food){
+        if (position < dinnerList.size() && position >= 0){
+            dinnerList.set(position, food);
+        }
+    }
+
+    public void editSnackList(int position, DiaryItem food){
+        if (position < snackList.size() && position >= 0){
+            snackList.set(position, food);
+        }
+    }
+
+    public void editExerciseList(int position, DiaryItem exercise){
+        if (position < exerciseList.size() && position >= 0){
+            exerciseList.set(position, exercise);
+        }
+    }
+
 }

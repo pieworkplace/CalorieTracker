@@ -1,10 +1,13 @@
 package com.example.junlinliu.calorietracker;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
@@ -21,20 +24,55 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private UserData userData;
-    private String currentDateString;
+    private static UserData userData;
+    private static String currentDateString;
+
+    public static final int REQUEST_ADD_BREAKFAST = 11;
+    public static final int REQUEST_ADD_LUNCH = 12;
+    public static final int REQUEST_ADD_DINNER = 13;
+    public static final int REQUEST_ADD_SNACKS = 14;
+    public static final int REQUEST_ADD_EXERCISE = 15;
+
+    @Override
+    public void onBackPressed() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userData = new UserData();
-        currentDateString = DateUtil.dateToString(new Date());
+        currentDateString = DateUtil.millisecondTimeToString(System.currentTimeMillis());
+        setDatePicker();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        setAllDataInMain();
+    }
+
+    private void setDatePicker() {
+        final TextView textView = findViewById(R.id.main_toolbar_title);
+        textView.setText(currentDateString);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Date date = DateUtil.stringToDate(currentDateString);
+                Dialog dialog = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        currentDateString = DateUtil.dateToString(new Date(year - 1900, monthOfYear, dayOfMonth));
+                        textView.setText(currentDateString);
+                        setAllDataInMain();
+                    }
+                }, date.getYear() + 1900, date.getMonth(), date.getDate());
+                dialog.show();
+            }
+        });
+    }
+
+    private void setAllDataInMain(){
         setTableData();
         Diary diary = userData.getDiary(currentDateString);
         setListData(R.id.diary_breakfast_header, R.id.diary_breakfast_footer, R.id.diary_breakfast, diary.getBreakfastList(), diary.getBreakfastCalorie(), R.string.diary_food_breakfast, R.string.diary_add_food);
@@ -70,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Intent intent;
-//                switch (R_string_item) {
+                switch (R_string_item) {
 //                    case R.string.diary_food_breakfast:
 //                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
 //                        intent.putExtra("position", position);
@@ -95,13 +133,15 @@ public class MainActivity extends AppCompatActivity {
 //                        intent.putExtra("Food", (Food) itemList.get(position));
 //                        startActivityForResult(intent, REQUEST_ADD_SNACKS);
 //                        break;
-//                    case R.string.diary_exercise:
-//                        intent = new Intent(getActivity(), EditExerciseActivity.class);
-//                        intent.putExtra("position", position);
-//                        intent.putExtra("Exercise", (Exercise) itemList.get(position));
+                    case R.string.diary_exercise:
+                        intent = new Intent(MainActivity.this, EditExerciseActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("Exercise", itemList.get(position));
+                        intent.putExtra("currentDateString", currentDateString);
+                        startActivity(intent);
 //                        startActivityForResult(intent, REQUEST_ADD_EXERCISE);
-//                        break;
-//                }
+                        break;
+                }
             }
         });
         listViewItem.setAdapter(itemListAdapter);
@@ -111,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         footer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                switch (R_string_item) {
+                switch (R_string_item) {
 //                    case R.string.diary_food_breakfast:
 //                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_BREAKFAST);
 //                        break;
@@ -124,11 +164,18 @@ public class MainActivity extends AppCompatActivity {
 //                    case R.string.diary_food_snacks:
 //                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_SNACKS);
 //                        break;
-//                    case R.string.diary_exercise:
-//                        startActivityForResult(new Intent(getActivity(), AddExerciseActivity.class), REQUEST_ADD_EXERCISE);
-//                        break;
-//                }
+                    case R.string.diary_exercise:
+//                        startActivityForResult(new Intent(MainActivity.this, AddExerciseActivity.class), REQUEST_ADD_EXERCISE);
+                        Intent intent = new Intent(MainActivity.this, AddExerciseActivity.class);
+                        intent.putExtra("currentDateString", currentDateString);
+                        startActivity(intent);
+                        break;
+                }
             }
         });
+    }
+
+    public static UserData getUserData() {
+        return userData;
     }
 }

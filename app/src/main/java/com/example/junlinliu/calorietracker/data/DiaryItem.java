@@ -1,10 +1,19 @@
 package com.example.junlinliu.calorietracker.data;
 
-public class DiaryItem {
+import java.io.Serializable;
+
+public class DiaryItem implements Serializable{
     private String title;
     private int caloriePerUnit;
     private double unitNumber;
     private String unitName;
+
+    public DiaryItem(String title, int caloriePerUnit, double unitNumber, String unitName) {
+        this.title = title;
+        this.caloriePerUnit = caloriePerUnit;
+        this.unitNumber = unitNumber;
+        this.unitName = unitName;
+    }
 
     public String getTitle() {
         return title;
