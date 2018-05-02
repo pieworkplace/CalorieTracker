@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/large_padding"
         android:paddingTop="@dimen/small_padding"
-        android:text="@string/diary_content_unit_name" />
+        android:text="@string/diary_exercise_unit_name" />
 
     <EditText
         android:id="@+id/diary_exercise_unit_name_edit"

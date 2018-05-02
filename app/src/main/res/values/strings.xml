@@ -15,11 +15,11 @@
     <string name="diary_create_exercise">Create Exercise</string>
     <string name="diary_add_exercise_title">Exercise Description</string>
     <string name="add_exercise_title_example">Required (e.g. running, swimming)</string>
-    <string name="diary_content_unit_name">Unit</string>
+    <string name="diary_food_unit_name">Serving Size</string>
     <string name="add_exercise_unit_name_example">Required (e.g. hour, minute)</string>
     <string name="diary_exercise_length">Length</string>
     <string name="add_exercise_length_example">Required</string>
-    <string name="diary_content_calorie_per_unit">Calorie Per Unit</string>
+    <string name="diary_content_calorie_per_unit">Calories Burned Per Unit</string>
     <string name="add_food_calorie_per_unit_example">Required</string>
     <string name="add_done">Done</string>
     <string name="general_alert">Alert</string>
@@ -31,4 +31,17 @@
     <string name="delete_item_alert">Are you sure to delete this item?</string>
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
+    <string name="add_food_title_example">e.g. Big Mac, bananas</string>
+    <string name="diary_create_food">Create Food</string>
+    <string name="diary_content_title">Food Description</string>
+    <string name="add_food_unit_name_example">Required (e.g. piece, pound)</string>
+    <string name="add_food_title_example_required">Required (e.g. Big Mac, banana)</string>
+    <string name="add_food_amount_example">Required</string>
+    <string name="add_food_calory_per_unit_example">Required</string>
+    <string name="diary_content_amount">Number of Servings</string>
+    <string name="diary_content_calory_per_unit">Calories Per Serving</string>
+    <string name="diary_exercise_unit_name">Unit</string>
+    <string name="copyright_nutrix">Powered by</string>
+    <string name="diary_content_unit_name">Time Unit</string>
+    <string name="diary_edit_food">Edit Food</string>
 </resources>

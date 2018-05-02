@@ -109,30 +109,38 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Intent intent;
                 switch (R_string_item) {
-//                    case R.string.diary_food_breakfast:
-//                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
-//                        intent.putExtra("position", position);
-//                        intent.putExtra("Food", (Food) itemList.get(position));
-//                        startActivityForResult(intent, REQUEST_ADD_BREAKFAST);
-//                        break;
-//                    case R.string.diary_food_lunch:
-//                        intent = new Intent(getActivity(), EditFoodActivity.class);
-//                        intent.putExtra("position", position);
-//                        intent.putExtra("Food", (Food) itemList.get(position));
-//                        startActivityForResult(intent, REQUEST_ADD_LUNCH);
-//                        break;
-//                    case R.string.diary_food_dinner:
-//                        intent = new Intent(getActivity(), EditFoodActivity.class);
-//                        intent.putExtra("position", position);
-//                        intent.putExtra("Food", (Food) itemList.get(position));
-//                        startActivityForResult(intent, REQUEST_ADD_DINNER);
-//                        break;
-//                    case R.string.diary_food_snacks:
-//                        intent = new Intent(getActivity(), EditFoodActivity.class);
-//                        intent.putExtra("position", position);
-//                        intent.putExtra("Food", (Food) itemList.get(position));
-//                        startActivityForResult(intent, REQUEST_ADD_SNACKS);
-//                        break;
+                    case R.string.diary_food_breakfast:
+                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("Food", (DiaryItem) itemList.get(position));
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "breakfast");
+                        startActivityForResult(intent, REQUEST_ADD_BREAKFAST);
+                        break;
+                    case R.string.diary_food_lunch:
+                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("Food", (DiaryItem) itemList.get(position));
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "lunch");
+                        startActivityForResult(intent, REQUEST_ADD_LUNCH);
+                        break;
+                    case R.string.diary_food_dinner:
+                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("Food", (DiaryItem) itemList.get(position));
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "dinner");
+                        startActivityForResult(intent, REQUEST_ADD_DINNER);
+                        break;
+                    case R.string.diary_food_snacks:
+                        intent = new Intent(MainActivity.this, EditFoodActivity.class);
+                        intent.putExtra("position", position);
+                        intent.putExtra("Food", (DiaryItem) itemList.get(position));
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "snack");
+                        startActivityForResult(intent, REQUEST_ADD_SNACKS);
+                        break;
                     case R.string.diary_exercise:
                         intent = new Intent(MainActivity.this, EditExerciseActivity.class);
                         intent.putExtra("position", position);
@@ -151,22 +159,34 @@ public class MainActivity extends AppCompatActivity {
         footer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
                 switch (R_string_item) {
-//                    case R.string.diary_food_breakfast:
-//                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_BREAKFAST);
-//                        break;
-//                    case R.string.diary_food_lunch:
-//                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_LUNCH);
-//                        break;
-//                    case R.string.diary_food_dinner:
-//                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_DINNER);
-//                        break;
-//                    case R.string.diary_food_snacks:
-//                        startActivityForResult(new Intent(getActivity(), SearchFoodActivity.class), REQUEST_ADD_SNACKS);
-//                        break;
+                    case R.string.diary_food_breakfast:
+                        intent = new Intent(MainActivity.this, SearchFoodActivity.class);
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "breakfast");
+                        startActivity(intent);
+                        break;
+                    case R.string.diary_food_lunch:
+                        intent = new Intent(MainActivity.this, SearchFoodActivity.class);
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "lunch");
+                        startActivity(intent);
+                        break;
+                    case R.string.diary_food_dinner:
+                        intent = new Intent(MainActivity.this, SearchFoodActivity.class);
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "dinner");
+                        startActivity(intent);
+                        break;
+                    case R.string.diary_food_snacks:
+                        intent = new Intent(MainActivity.this, SearchFoodActivity.class);
+                        intent.putExtra("currentDateString", currentDateString);
+                        intent.putExtra("whichMeal", "snack");
+                        startActivity(intent);
+                        break;
                     case R.string.diary_exercise:
-//                        startActivityForResult(new Intent(MainActivity.this, AddExerciseActivity.class), REQUEST_ADD_EXERCISE);
-                        Intent intent = new Intent(MainActivity.this, AddExerciseActivity.class);
+                        intent = new Intent(MainActivity.this, AddExerciseActivity.class);
                         intent.putExtra("currentDateString", currentDateString);
                         startActivity(intent);
                         break;
@@ -178,4 +198,5 @@ public class MainActivity extends AppCompatActivity {
     public static UserData getUserData() {
         return userData;
     }
+
 }

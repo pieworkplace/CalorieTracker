@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.junlinliu.calorietracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +21,10 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AddExerciseActivity" />
-        <activity android:name=".EditExerciseActivity"></activity>
+        <activity android:name=".EditExerciseActivity" />
+        <activity android:name=".SearchFoodActivity" />
+        <activity android:name=".AddFoodActivity" />
+        <activity android:name=".EditFoodActivity"></activity>
     </application>
 
 </manifest>
