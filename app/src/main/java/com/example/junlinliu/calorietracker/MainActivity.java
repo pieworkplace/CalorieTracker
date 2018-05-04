@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
@@ -16,6 +17,7 @@ import com.example.junlinliu.calorietracker.data.Diary;
 import com.example.junlinliu.calorietracker.data.DiaryItem;
 import com.example.junlinliu.calorietracker.data.UserData;
 import com.example.junlinliu.calorietracker.utils.DateUtil;
+import com.example.junlinliu.calorietracker.utils.InternalStorageService;
 import com.example.junlinliu.calorietracker.utils.ItemListAdapter;
 
 import java.util.ArrayList;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userData = new UserData();
+        userData = InternalStorageService.loadFromStorage(MainActivity.this);
         currentDateString = DateUtil.millisecondTimeToString(System.currentTimeMillis());
         setDatePicker();
     }
@@ -193,6 +195,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("startloading", "destroyed");
+        InternalStorageService.writeToStorage(MainActivity.this, userData);
     }
 
     public static UserData getUserData() {

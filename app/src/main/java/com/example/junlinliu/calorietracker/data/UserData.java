@@ -1,7 +1,5 @@
 package com.example.junlinliu.calorietracker.data;
 
-import com.example.junlinliu.calorietracker.utils.DateUtil;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +9,7 @@ public class UserData implements Serializable{
     private Map<String, Diary> stringDiaryHashMap;
 
     public UserData() {
-        goal = 2000;
+        goal = 0;
         stringDiaryHashMap = new HashMap<>();
     }
 
