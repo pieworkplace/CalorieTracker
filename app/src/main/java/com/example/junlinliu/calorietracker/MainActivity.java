@@ -2,13 +2,17 @@ package com.example.junlinliu.calorietracker;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 
     @Override
@@ -45,7 +53,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         userData = InternalStorageService.loadFromStorage(MainActivity.this);
         currentDateString = DateUtil.millisecondTimeToString(System.currentTimeMillis());
+        setToolbar();
         setDatePicker();
+    }
+
+    private void setToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar_main);
+        toolbar.setTitle("");
+        toolbar.setNavigationIcon(R.drawable.ic_settings_white_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showInputDialog();
+                setAllDataInMain();
+            }
+        });
     }
 
     @Override
@@ -200,8 +222,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("startloading", "destroyed");
         InternalStorageService.writeToStorage(MainActivity.this, userData);
+    }
+
+    private void showInputDialog() {
+        View view = getLayoutInflater().inflate(R.layout.edittext_for_dialog, null);
+        final EditText editText = view.findViewById(R.id.edittext_in_dialog_set_goal);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.set_goal_hint);
+        builder.setView(editText);
+//        editText.setText(userData.getGoal());
+        builder.setPositiveButton(R.string.dialog_positive_button_ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (editText.getText().toString().equals("")){
+                    return;
+                }
+                userData.setGoal(Integer.parseInt(editText.getText().toString()));
+                setAllDataInMain();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.show();
     }
 
     public static UserData getUserData() {

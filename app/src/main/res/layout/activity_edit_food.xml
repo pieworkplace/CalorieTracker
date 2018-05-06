@@ -9,13 +9,8 @@
     tools:context=".MainActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_edit_food"
-        android:background="@color/colorPrimary"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/MyToolbar">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/diary_edit_food"
             style="@style/MyToolbarTextLight"/>
     </android.support.v7.widget.Toolbar>
@@ -35,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/diary_content_unit_name"
+        android:text="@string/diary_food_unit_name"
         android:paddingLeft="@dimen/large_padding"
         android:paddingTop="@dimen/small_padding"/>
     <EditText

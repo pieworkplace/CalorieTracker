@@ -8,15 +8,9 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_add_exercise"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
-
+        style="@style/MyToolbar">
         <TextView
             style="@style/MyToolbarTextLight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/diary_create_exercise" />
     </android.support.v7.widget.Toolbar>
 

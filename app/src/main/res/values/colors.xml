@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">@color/darkslategrey</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#6d86d8</color>f28838
+    <color name="colorPrimaryDark">#4e5f9a</color>
+    <color name="colorAccent">#ffb75a</color>
     <color name="colorLightText">@color/white</color>
+    <!--<color name="colorDarkText">#37474f</color>-->
+    <color name="colorBorderLine">@color/whitesmoke</color>
 
     <color name="black">#000000</color><!--黑色 -->
     <color name="lightblack">#202020</color><!--浅黑色 -->

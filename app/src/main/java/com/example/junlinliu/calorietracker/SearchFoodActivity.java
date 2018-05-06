@@ -3,12 +3,15 @@ package com.example.junlinliu.calorietracker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -80,6 +83,19 @@ public class SearchFoodActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        EditText textView = searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        textView.setHintTextColor(ContextCompat.getColor(SearchFoodActivity.this, R.color.colorPrimary));
+        textView.setTextColor(ContextCompat.getColor(SearchFoodActivity.this, R.color.colorLightText));
+
+        ImageView icon = (ImageView)searchView.findViewById(android.support.v7.appcompat.R.id.search_mag_icon);
+//        icon.setAdjustViewBounds(true);
+//        icon.setMaxWidth(0);
+//        icon.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//        icon.setImageDrawable(null);
+        icon.setColorFilter(SearchFoodActivity.this.getResources().getColor(R.color.colorPrimary));
+
+
     }
 
     @Override
@@ -199,6 +215,7 @@ public class SearchFoodActivity extends AppCompatActivity {
                 listView.setAdapter(new SearchFoodListAdapter(foods, SearchFoodActivity.this));
                 createFoodButton = getLayoutInflater().inflate(R.layout.search_food_create_food_button, null);
                 listView.addFooterView(createFoodButton);
+                listView.setDivider(null);//去除listview的下划线
             }
             (createFoodButton.findViewById(R.id.create_food_button)).setOnClickListener(new View.OnClickListener() {
                 @Override

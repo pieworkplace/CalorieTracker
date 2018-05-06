@@ -10,10 +10,7 @@
     tools:context=".MainActivity">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_search_food"
-        android:background="@color/colorPrimary"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/MyToolbar">
         <android.support.v7.widget.SearchView
             android:id="@+id/search_food_search_view"
             android:layout_width="wrap_content"

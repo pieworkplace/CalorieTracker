@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/imageView"
@@ -16,10 +16,9 @@
         android:layout_marginTop="@dimen/splash_margin_top"
         android:scaleX="@dimen/splash_image_scale"
         android:scaleY="@dimen/splash_image_scale"
-        android:src="@drawable/ic_assignment_yellow_700_48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@drawable/ic_assignment_white_700_48dp"
+        android:layout_above="@id/textView"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView"
@@ -33,8 +32,7 @@
         android:textSize="@dimen/splash_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-</android.support.constraint.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

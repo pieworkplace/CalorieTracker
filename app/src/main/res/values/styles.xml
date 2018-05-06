@@ -8,10 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MyToolbarDark">
+    <style name="MyToolbar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="MyToolbarTextLight">
@@ -32,7 +32,7 @@
         <item name="android:layout_marginLeft">@dimen/large_padding</item>
         <item name="android:layout_marginRight">@dimen/large_padding</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:padding">@dimen/small_padding</item>
         <item name="android:background">@drawable/rounded_corner_background_border</item>
